@@ -1,0 +1,73 @@
+#+TITLE: Pseudocode
+
+anyime there is a move, generate a random tile on the x and y axis that is not occiupied
+- generate, if occupied, generate again
+
+when there is a move (eg left), move the left most tile left until it can't move anymore then move the one to the right of that all the way left, and so on. Then move down one row and repeat.
+
+|   | 4 | 8 | 8 |
+| 2 |   | 2 |   |
+| 4 |   | 2 |   |
+| 2 | 4 |   |   |
+
+| 4 |   | 8 | 8 |
+| 2 |   | 2 |   |
+| 4 |   | 2 |   |
+| 2 | 4 |   |   |
+
+| 4 |  8 |    | 8 |
+| 2 |   | 2 |   |
+| 4 |   | 2 |   |
+| 2 | 4 |   |   |
+
+| 4 | 8 | 8 |   |
+| 2 |   | 2 |   |
+| 4 |   | 2 |   |
+| 2 | 4 |   |   |
+
+| 4 | 16 |   |   |
+| 2 |    | 2 |   |
+| 4 |    | 2 |   |
+| 2 |  4 |   |   |
+
+#+BEGIN_SRC python
+if (board[0][1] != 0 and board[0][0] == 0):
+    board[0][0] = board[0][1]
+    board [0][1] = 0
+
+# Then move one to the right and go again
+if (board[0][2] != 0 and board[0][1] == 0):
+    board[0][1] = board [0][2]
+    board [0][2] = 0
+
+# and again until it reaches the end of the line then move down one row and try again
+if (board[1][1] != 0 and board[1][0] == 0):
+    board[1][0] = board[1][1]
+    board[1][1] = 0
+
+# and continue down the row then go down one again --> First move in the x axis then move in the y axis and try to avoid out of bounds errors
+
+#+END_SRC
+
+if two tiles touch, check if they are the same number then make the one in the direction of movement the double number
+
+* Printing the board
+$$$$$$$$$$$$$$$$$$$$$
+$    $    $    $    $
+$$$$$$$$$$$$$$$$$$$$$
+$    $    $    $    $
+$$$$$$$$$$$$$$$$$$$$$
+$    $    $    $    $
+$$$$$$$$$$$$$$$$$$$$$
+$    $    $    $    $
+$$$$$$$$$$$$$$$$$$$$$
+
+█████████████████████
+█    █    █    █    █
+█████████████████████
+█    █    █    █    █
+█████████████████████
+█    █    █    █    █
+█████████████████████
+█    █    █    █    █
+█████████████████████
