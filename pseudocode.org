@@ -1,6 +1,6 @@
 #+TITLE: Pseudocode
 
-anyime there is a move, generate a random tile on the x and y axis that is not occiupied
+anytime there is a move, generate a random tile on the x and y axis that is not occiupied
 - generate, if occupied, generate again
 
 when there is a move (eg left), move the left most tile left until it can't move anymore then move the one to the right of that all the way left, and so on. Then move down one row and repeat.
@@ -34,6 +34,15 @@ when there is a move (eg left), move the left most tile left until it can't move
 if (board[0][1] != 0 and board[0][0] == 0):
     board[0][0] = board[0][1]
     board [0][1] = 0
+
+    # --> This tile needs to move all the way to the left before it can go to the next one.
+
+# move from 2 --> 1 then from 1 --> 0
+
+if (board[0][2] != 0 and board [0][1] == 0):
+    board[0][1] = board[0][2]
+    board[0][2] = 0
+
 
 # Then move one to the right and go again
 if (board[0][2] != 0 and board[0][1] == 0):
