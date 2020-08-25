@@ -10,7 +10,30 @@ def print_board():
     print("█████████████████████")
 
 def up():
-    print("up")
+    for x in range(len(board)):
+        for y in range(len(board)):
+            move_up(x, y)
+
+def move_up(x, y):
+    if (board[x][y] != 0 and board[x][y - 1] == 0):
+        board[x][y - 1] = board[x][y]
+        board[x][y] = 0
+
+        if (board[x][y - 2] == 0 and y >= 2):
+            move_up(x, y - 1)
+
+def down():
+    for x in reversed(range(len(board))):
+        for y in reversed(range(len(board))):
+            move_down(x, y)
+
+def move_down(x, y):
+    if (board[x][y] != 0 and board[x][y + 1] == 0):
+        board[x][y + 1] = board[x][y]
+        board[x][y] = 0
+
+        if (board[x][y + 2] == 0 and y <= 1):
+            move_down(x, y + 1)
 
 def left():
     for x in range(len(board)):
@@ -22,16 +45,23 @@ def move_left(x, y):
         board[x - 1][y] = board[x][y]
         board[x][y] = 0
 
-        if (board[x - 2][y] == 0 and x - 2 >= 0):
+        if (board[x - 2][y] == 0 and x >= 2):
             move_left(x - 1, y)
 
-def down():
-    print("down")
-
 def right():
-    print("right")
+   for x in reversed(range(len(board))):
+       for y in reversed(range(len(board))):
+            move_right(x, y)
 
-board = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 2, 0]]
+def move_right(x, y):
+    if (board[x][y] != 0 and board[x + 1][y] == 0):
+        board[x + 1][y] = board[x][y]
+        board[x][y] = 0
+
+        if (board[x + 2][y] == 0 and x <= 1):
+            move_right(x + 1, y)
+
+board = [[0, 0, 0, 0], [0, 0, 2, 0], [0, 0, 0, 0], [0, 0, 2, 0]]
 print_board()
 
 game_ended = False
